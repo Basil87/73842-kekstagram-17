@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [Vasiliy Aleksandrov](https://up.htmlacademy.ru/javascript/17/user/73842).
-* Наставник: `Ivan Chirvaо`.
+* Наставник: Ivan Chirva.
 
 ---
 
