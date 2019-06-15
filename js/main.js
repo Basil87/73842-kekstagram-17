@@ -20,9 +20,18 @@
     var MIN_COMMENTS = 15;
     var MAX_COMMENTS = 200;
 
+    this._createCommentsArr = function () {
+      var commentsArr = [];
+      for (var i = 0; i < findRandomMinMax(1, 2); i++ ) {
+        commentsArr.push(findRandomElem(COMMENT_ARRAY));
+      }
+
+      return commentsArr;
+    }
+
     this.url = 'photos/' + (index + 1) + '.jpg';
     this.likes = findRandomMinMax(MIN_COMMENTS, MAX_COMMENTS);
-    this.comments = findRandomElem(COMMENT_ARRAY);
+    this.comments = this._createCommentsArr();
   };
 
   var createPicture = function (imageInfo) {
@@ -38,7 +47,7 @@
   };
 
 
-  var addFragment = function () {
+  var addFragments = function () {
 
     var fragment = document.createDocumentFragment();
     var picturesBlock = document.querySelector('.pictures');
@@ -51,37 +60,6 @@
     picturesBlock.appendChild(fragment);
   };
 
-  addFragment();
-
-  // var addComment = function (imageInfo) {
-  //   var socComments = document.querySelector('.social__comments');
-
-  //   for (var i = 0; i < 3; i++) {
-  //     var commentItem = makeElement('li', 'social__comment', 'social__comment--text');
-  //     var commentImg = makeElement('img', 'social__picture');
-  //     commentImg.src = 'img/avatar-' + findRandomMinMax(1, 6) + '.svg';
-  //     commentImg.alt = 'Аватар комментатора фотографии';
-  //     commentImg.width = 35;
-  //     commentImg.height = 35;
-  //     commentItem.appendChild(commentImg);
-  //     commentItem.appendChild(document.createTextNode(imageInfo[i].comments));
-  //     socComments.appendChild(commentItem);
-  //   }
-  // };
-
-  // var hideElem = function (elem) {
-  //   document.querySelector(elem).classList.add('visually-hidden');
-  // };
-
-  // var initPicture = function () {
-  //   var pictureInfo = createPictureInfo();
-  //   addFragment(pictureInfo);
-  //   showBigPicture(pictureInfo[0]);
-  //   addComment(pictureInfo);
-  //   hideElem('.social__comment-count');
-  //   hideElem('.social__comment-loadmore');
-  // };
-
-  // initPicture();
+  addFragments();
 
 })();
