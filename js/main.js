@@ -53,7 +53,6 @@
     var picturesBlock = document.querySelector('.pictures');
 
     for (var i = 0; i < NUMBER_OF_PICTURES; i++) {
-      console.log(new Mock(i));
       fragment.appendChild(createPicture(new Mock(i)));
     }
 
