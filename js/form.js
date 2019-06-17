@@ -10,6 +10,7 @@
   var overlay = document.querySelector('.img-upload__overlay');
   var imageUploadScale = document.querySelector('.img-upload__scale');
   var imageSize = document.querySelector('.scale__control--value');
+  var slider = document.querySelector('.effect-level');
 
   var closePopup = function () {
     upload.value = '';
@@ -27,6 +28,7 @@
     overlay.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
     document.querySelector('.scale').style.visibility = 'hidden';
+    slider.style.visibility = 'hidden';
     imageUploadScale.style.visibility = 'visible';
     imageSize.value = '100%';
   };
