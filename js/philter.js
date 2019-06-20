@@ -22,6 +22,15 @@
     }
   };
 
-  window.initSlider(changeSaturation);
+  // var classToSaturation = {
+  //   'effects__preview--chrome': 'grayscale(' + intensityIndex + ')',
+  //   'effects__preview--sepia': 'sepia(' + intensityIndex + ')',
+  //   'effects__preview--marvin': 'invert(' + (intensityIndex * 100) + '%)',
+  //   'effects__preview--phobos': 'blur(' + (intensityIndex * 3) + 'px)',
+  //   'effects__preview--heat': 'brightness(' + (1 + intensityIndex * 2) + ')',
+  //   'effects__preview--none': ''
+  // };
+
+  window.changeSaturation = changeSaturation;
 
 })();

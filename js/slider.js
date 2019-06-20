@@ -8,7 +8,7 @@
   var imageWrap = document.querySelector('.img-upload__preview');
   var effects = document.querySelector('.effects__list');
 
-  window.initSlider = function (changeSaturation) {
+  var initSlider = function () {
 
     effects.addEventListener('click', function (e) {
       sliderPin.style.left = '100%';
@@ -23,7 +23,7 @@
       if (e.target.classList.contains('effects__preview')) {
         imageWrap.classList = 'img-upload__preview';
         imageWrap.classList.add(e.target.classList[1]);
-        changeSaturation(1);
+        window.changeSaturation(1);
       }
     });
 
@@ -44,7 +44,7 @@
           sliderLevel.style.width = (sliderPin.offsetLeft) + 'px';
         }
 
-        changeSaturation(sliderNumber);
+        window.changeSaturation(sliderNumber);
       };
 
       var onMouseUp = function (upE) {
@@ -58,4 +58,6 @@
       document.addEventListener('mouseup', onMouseUp);
     });
   };
+
+  initSlider(window.changeSaturation);
 })();
