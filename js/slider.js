@@ -59,5 +59,5 @@
     });
   };
 
-  initSlider(window.changeSaturation);
+  initSlider();
 })();

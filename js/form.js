@@ -10,6 +10,7 @@
   var overlay = document.querySelector('.img-upload__overlay');
   var imageUploadScale = document.querySelector('.img-upload__scale');
   var imageSize = document.querySelector('.scale__control--value');
+  var imageWrap = document.querySelector('.img-upload__preview');
   var slider = document.querySelector('.effect-level');
 
   var closePopup = function () {
@@ -31,6 +32,7 @@
     slider.style.visibility = 'hidden';
     imageUploadScale.style.visibility = 'visible';
     imageSize.value = '100%';
+    imageWrap.style.filter = 'none';
   };
 
   upload.addEventListener('change', function (e) {
