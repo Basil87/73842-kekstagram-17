@@ -12,6 +12,7 @@
   var imageSize = document.querySelector('.scale__control--value');
   var imageWrap = document.querySelector('.img-upload__preview');
   var slider = document.querySelector('.effect-level');
+  var textDescription = document.querySelector('.text__description');
 
   var closePopup = function () {
     upload.value = '';
@@ -20,7 +21,7 @@
   };
 
   var onPopupEscPress = function (e) {
-    if (e.keyCode === ESC_KEYCODE) {
+    if (e.keyCode === ESC_KEYCODE && textDescription !== document.activeElement) {
       closePopup();
     }
   };
