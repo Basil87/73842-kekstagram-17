@@ -36,7 +36,6 @@
 
         var shift = startCoords - moveE.clientX;
         var sliderNumber = (sliderPin.offsetLeft / sliderLine.offsetWidth).toFixed(1);
-
         startCoords = moveE.clientX;
 
         if (sliderPin.offsetLeft - shift >= 0 && sliderPin.offsetLeft - shift <= sliderLine.offsetWidth) {
