@@ -4,6 +4,7 @@
 
   var NUMBER_OF_PICTURES = 25;
 
+  var Mock = window.Mock;
   var createPicture = function (imageInfo) {
 
     var samplePicture = document.querySelector('#picture');
@@ -23,7 +24,7 @@
     var picturesBlock = document.querySelector('.pictures');
 
     for (var i = 0; i < NUMBER_OF_PICTURES; i++) {
-      fragment.appendChild(createPicture(new window.Mock(i)));
+      fragment.appendChild(createPicture(new Mock(i)));
     }
 
     picturesBlock.appendChild(fragment);
