@@ -35,7 +35,7 @@
     var imgFiltersButton = filtersForm.querySelectorAll('.img-filters__button');
     var result = idToFilter[evt.target.id];
 
-    [].map.call(imgFiltersButton, function (it) {
+    imgFiltersButton.forEach(function (it) {
       it.classList.remove('img-filters__button--active');
     });
 
