@@ -2,7 +2,11 @@
 
 (function () {
 
+  var debounce = window.debounce;
   var backend = window.backend;
+  var changeFilter = window.changeFilter;
+  var imgFilters = document.querySelector('.img-filters');
+  var picContainer = document.querySelector('.pictures');
   var picturesInfo = [];
 
   var createPicture = function (imageInfo) {
@@ -17,21 +21,34 @@
     return elem;
   };
 
-  var addFragments = function () {
+  var addFragments = function (insideData) {
 
     var fragment = document.createDocumentFragment();
     var picturesBlock = document.querySelector('.pictures');
 
-    for (var i = 0; i < picturesInfo.length; i++) {
-      fragment.appendChild(createPicture(picturesInfo[i]));
+    for (var i = 0; i < insideData.length; i++) {
+      fragment.appendChild(createPicture(insideData[i]));
     }
 
     picturesBlock.appendChild(fragment);
   };
 
+  var removePictures = function () {
+    var picturesToRemove = picContainer.querySelectorAll('.picture');
+    for (var i = 0; i < picturesToRemove.length; i++) {
+      picContainer.removeChild(picturesToRemove[i]);
+    }
+  };
+
+  var activateFilter = debounce(function (e) {
+    removePictures();
+    addFragments(changeFilter(e, picturesInfo));
+  });
+
   var successHandler = function (data) {
     picturesInfo = data;
-    addFragments();
+    addFragments(picturesInfo);
+    imgFilters.classList.remove('img-filters--inactive');
   };
 
   var errorHandler = function (errorMessage) {
@@ -47,5 +64,11 @@
   };
 
   backend.load(successHandler, errorHandler);
+
+  imgFilters.addEventListener('click', function (e) {
+    if (e.target.classList.contains('img-filters__button')) {
+      activateFilter(e);
+    }
+  });
 
 })();
