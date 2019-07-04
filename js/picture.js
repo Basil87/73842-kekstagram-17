@@ -5,6 +5,7 @@
   var debounce = window.debounce;
   var backend = window.backend;
   var changeFilter = window.changeFilter;
+  var showBigPicture = window.showBigPicture;
   var imgFilters = document.querySelector('.img-filters');
   var picContainer = document.querySelector('.pictures');
   var picturesInfo = [];
@@ -33,6 +34,8 @@
     picturesBlock.appendChild(fragment);
   };
 
+  // сортировка изображений
+
   var removePictures = function () {
     var picturesToRemove = picContainer.querySelectorAll('.picture');
     for (var i = 0; i < picturesToRemove.length; i++) {
@@ -44,6 +47,8 @@
     removePictures();
     addFragments(changeFilter(e, picturesInfo));
   });
+
+  // загрузка с сервера изображений
 
   var successHandler = function (data) {
     picturesInfo = data;
@@ -65,9 +70,24 @@
 
   backend.load(successHandler, errorHandler);
 
+  // фильтры отображения загруженных изображений
+
   imgFilters.addEventListener('click', function (e) {
     if (e.target.classList.contains('img-filters__button')) {
       activateFilter(e);
+    }
+  });
+
+  // открытие большой версии изображения
+
+  picContainer.addEventListener('click', function (e) {
+
+    if (e.target.classList.contains('picture__img')) {
+      for (var i = 0; i < picturesInfo.length; i++) {
+        if (picturesInfo[i].url === e.target.attributes.src.nodeValue) {
+          showBigPicture(picturesInfo[i]);
+        }
+      }
     }
   });
 
