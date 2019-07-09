@@ -81,6 +81,7 @@
 
   errorButtonsBlock.addEventListener('click', function (e) {
     e.preventDefault();
+
     if (e.target.textContent === 'Попробовать снова') {
       closePopupMessage();
       backend.save(new FormData(form), sendSuccessHandler, sendErrorHandler);
