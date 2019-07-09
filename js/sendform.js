@@ -114,7 +114,7 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     onSubmitValidate();
-    if (hashtag.style.outline !== '2px solid red') {
+    if (hashtag.style.outline !== 'red solid 2px') {
       backend.save(new FormData(form), sendSuccessHandler, sendErrorHandler);
       closePopup();
     }

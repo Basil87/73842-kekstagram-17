@@ -21,7 +21,6 @@
     }
 
     for (var i = 0; i < hashtagsArr.length; i++) {
-
       if (hashtagsArr[i] === '#') {
         return 'Хэштег не может состоять из одной решетки';
       } else if (hashtagsArr[i].length === 2) {
