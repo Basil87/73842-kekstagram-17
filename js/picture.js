@@ -38,9 +38,9 @@
 
   var removePictures = function () {
     var picturesToRemove = picContainer.querySelectorAll('.picture');
-    for (var i = 0; i < picturesToRemove.length; i++) {
-      picContainer.removeChild(picturesToRemove[i]);
-    }
+    picturesToRemove.forEach(function (item) {
+      picContainer.removeChild(item);
+    });
   };
 
   var activateFilter = debounce(function (e) {
@@ -63,7 +63,6 @@
     node.style.left = 0;
     node.style.right = 0;
     node.style.fontSize = '30px';
-
     node.textContent = errorMessage;
     document.body.insertAdjacentElement('afterbegin', node);
   };
@@ -83,11 +82,11 @@
   picContainer.addEventListener('click', function (e) {
 
     if (e.target.classList.contains('picture__img')) {
-      for (var i = 0; i < picturesInfo.length; i++) {
-        if (picturesInfo[i].url === e.target.attributes.src.nodeValue) {
-          showBigPicture(picturesInfo[i]);
+      picturesInfo.forEach(function (item) {
+        if (item.url === e.target.attributes.src.nodeValue) {
+          showBigPicture(item);
         }
-      }
+      });
     }
   });
 

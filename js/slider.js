@@ -6,15 +6,15 @@
   var sliderPin = slider.querySelector('.effect-level__pin');
   var sliderLevel = slider.querySelector('.effect-level__depth');
   var imageWrap = document.querySelector('.img-upload__preview');
-  var effects = document.querySelector('.effects__list');
+  var effectsList = document.querySelector('.effects__list');
 
   var initSlider = function () {
 
-    effects.addEventListener('click', function (e) {
+    effectsList.addEventListener('click', function (e) {
       sliderPin.style.left = '100%';
       sliderLevel.style.width = '100%';
 
-      if (effects.querySelector('#effect-none').checked) {
+      if (effectsList.querySelector('#effect-none').checked) {
         slider.style.visibility = 'hidden';
       } else {
         slider.style.visibility = 'visible';
