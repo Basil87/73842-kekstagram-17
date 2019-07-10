@@ -81,14 +81,33 @@
 
   // открытие большой версии изображения
 
+  var picturesInfoEnumeration = function (conditions, evt) {
+    picturesInfo.forEach(function (item) {
+      conditions(item, evt);
+    });
+  };
+
+  var bigPictureClickHandler = function (picture, e) {
+    if (picture.url === e.target.attributes.src.nodeValue) {
+      showBigPicture(picture);
+    }
+  };
+
+  var bigPictureKeydownHandler = function (picture, e) {
+    if (picture.url === e.target.firstElementChild.attributes.src.nodeValue) {
+      showBigPicture(picture);
+    }
+  };
+
   picContainer.addEventListener('click', function (e) {
 
     if (e.target.classList.contains('picture__img')) {
-      picturesInfo.forEach(function (item) {
-        if (item.url === e.target.attributes.src.nodeValue) {
-          showBigPicture(item);
-        }
-      });
+      picturesInfoEnumeration(bigPictureClickHandler, e);
+      // picturesInfo.forEach(function (item) {
+      //   if (item.url === e.target.attributes.src.nodeValue) {
+      //     showBigPicture(item);
+      //   }
+      // });
     }
   });
 
@@ -96,11 +115,12 @@
 
     if (e.keyCode === ENTER_KEYCODE) {
       if (e.target.classList.contains('picture')) {
-        picturesInfo.forEach(function (item) {
-          if (item.url === e.target.firstElementChild.attributes.src.nodeValue) {
-            showBigPicture(item);
-          }
-        });
+        picturesInfoEnumeration(bigPictureKeydownHandler, e);
+        // picturesInfo.forEach(function (item) {
+        //   if (item.url === e.target.firstElementChild.attributes.src.nodeValue) {
+        //     showBigPicture(item);
+        //   }
+        // });
       }
     }
   });
