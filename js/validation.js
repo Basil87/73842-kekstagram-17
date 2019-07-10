@@ -9,7 +9,7 @@
 
   var validateHashTags = function () {
 
-    var hashtagsArr = hashtag.value.split(' ').filter(Boolean);
+    var hashtagsArr = hashtag.value.toLowerCase().split(' ').filter(Boolean);
 
     hashtag.addEventListener('input', function () {
       hashtag.setCustomValidity('');
@@ -47,7 +47,7 @@
 
   var highlightValidation = function (validationMessage, validatedField) {
     if (validationMessage) {
-      validatedField.style.outline = '2px solid red';
+      validatedField.style.outline = 'red solid 2px';
       validatedField.setCustomValidity(validationMessage);
     }
   };

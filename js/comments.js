@@ -27,7 +27,7 @@
       var commentItem = createElement('li', 'social__comment social__comment--text');
       var commentImg = createElement('img', 'social__picture');
       commentImg.src = commentsArr[i].avatar;
-      commentImg.alt = 'Аватар комментатора фотографии';
+      commentImg.alt = commentsArr[i].name;
       commentImg.width = 35;
       commentItem.appendChild(commentImg);
       commentItem.appendChild(document.createTextNode(commentsArr[i].message));

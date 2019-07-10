@@ -2,6 +2,8 @@
 
 (function () {
 
+  var ENTER_KEYCODE = 13;
+
   var debounce = window.debounce;
   var backend = window.backend;
   var changeFilter = window.changeFilter;
@@ -87,6 +89,19 @@
           showBigPicture(item);
         }
       });
+    }
+  });
+
+  picContainer.addEventListener('keydown', function (e) {
+
+    if (e.keyCode === ENTER_KEYCODE) {
+      if (e.target.classList.contains('picture')) {
+        picturesInfo.forEach(function (item) {
+          if (item.url === e.target.firstElementChild.attributes.src.nodeValue) {
+            showBigPicture(item);
+          }
+        });
+      }
     }
   });
 

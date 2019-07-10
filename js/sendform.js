@@ -24,6 +24,7 @@
   var backend = window.backend;
   var onSubmitValidate = window.onSubmitValidate;
   var closePopup = window.closePopup;
+  var submitBtn = document.querySelector('.img-upload__submit');
 
   window.addEventListener('load', function () {
     goodMessage.classList.add('visually-hidden');
@@ -66,6 +67,7 @@
   var openErrorPopup = function () {
     badMessage.classList.remove('visually-hidden');
     document.addEventListener('keydown', onMessageEscPress);
+    body.addEventListener('click', closeToBodyClick);
   };
 
   successButton.addEventListener('keydown', function (e) {
@@ -111,9 +113,12 @@
     openErrorPopup();
   };
 
+  submitBtn.addEventListener('click', function () {
+    onSubmitValidate();
+  });
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    onSubmitValidate();
     if (hashtag.style.outline !== 'red solid 2px') {
       backend.save(new FormData(form), sendSuccessHandler, sendErrorHandler);
       closePopup();
