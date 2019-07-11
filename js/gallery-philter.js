@@ -2,7 +2,7 @@
 
 (function () {
 
-  var filtersForm = document.querySelector('.img-filters__form');
+  var filtersFormElement = document.querySelector('.img-filters__form');
 
   var filterPopular = function (enterData) {
     return enterData;
@@ -32,10 +32,10 @@
   };
 
   var changeFilter = function (evt, jsonData) {
-    var imgFiltersButton = filtersForm.querySelectorAll('.img-filters__button');
+    var imgFiltersButtonElement = filtersFormElement.querySelectorAll('.img-filters__button');
     var result = idToFilter[evt.target.id];
 
-    imgFiltersButton.forEach(function (it) {
+    imgFiltersButtonElement.forEach(function (it) {
       it.classList.remove('img-filters__button--active');
     });
 

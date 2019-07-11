@@ -8,8 +8,8 @@
   var backend = window.backend;
   var changeFilter = window.changeFilter;
   var showBigPicture = window.showBigPicture;
-  var imgFilters = document.querySelector('.img-filters');
-  var picContainer = document.querySelector('.pictures');
+  var imgFiltersElement = document.querySelector('.img-filters');
+  var picContainerElement = document.querySelector('.pictures');
   var picturesInfo = [];
 
   var createPicture = function (imageInfo) {
@@ -39,9 +39,9 @@
   // сортировка изображений
 
   var removePictures = function () {
-    var picturesToRemove = picContainer.querySelectorAll('.picture');
+    var picturesToRemove = picContainerElement.querySelectorAll('.picture');
     picturesToRemove.forEach(function (item) {
-      picContainer.removeChild(item);
+      picContainerElement.removeChild(item);
     });
   };
 
@@ -55,7 +55,7 @@
   var successHandler = function (data) {
     picturesInfo = data;
     addFragments(picturesInfo);
-    imgFilters.classList.remove('img-filters--inactive');
+    imgFiltersElement.classList.remove('img-filters--inactive');
   };
 
   var errorHandler = function (errorMessage) {
@@ -73,7 +73,7 @@
 
   // фильтры отображения загруженных изображений
 
-  imgFilters.addEventListener('click', function (e) {
+  imgFiltersElement.addEventListener('click', function (e) {
     if (e.target.classList.contains('img-filters__button')) {
       activateFilter(e);
     }
@@ -81,46 +81,26 @@
 
   // открытие большой версии изображения
 
-  var picturesInfoEnumeration = function (conditions, evt) {
-    picturesInfo.forEach(function (item) {
-      conditions(item, evt);
+  var getPicture = function (node) {
+    return picturesInfo.find(function (picture) {
+      return picture.url === node.attributes.src.nodeValue;
     });
   };
 
-  var bigPictureClickHandler = function (picture, e) {
-    if (picture.url === e.target.attributes.src.nodeValue) {
-      showBigPicture(picture);
-    }
-  };
-
-  var bigPictureKeydownHandler = function (picture, e) {
-    if (picture.url === e.target.firstElementChild.attributes.src.nodeValue) {
-      showBigPicture(picture);
-    }
-  };
-
-  picContainer.addEventListener('click', function (e) {
+  picContainerElement.addEventListener('click', function (e) {
 
     if (e.target.classList.contains('picture__img')) {
-      picturesInfoEnumeration(bigPictureClickHandler, e);
-      // picturesInfo.forEach(function (item) {
-      //   if (item.url === e.target.attributes.src.nodeValue) {
-      //     showBigPicture(item);
-      //   }
-      // });
+      var picture = getPicture(e.target);
+      showBigPicture(picture);
     }
   });
 
-  picContainer.addEventListener('keydown', function (e) {
+  picContainerElement.addEventListener('keydown', function (e) {
 
     if (e.keyCode === ENTER_KEYCODE) {
       if (e.target.classList.contains('picture')) {
-        picturesInfoEnumeration(bigPictureKeydownHandler, e);
-        // picturesInfo.forEach(function (item) {
-        //   if (item.url === e.target.firstElementChild.attributes.src.nodeValue) {
-        //     showBigPicture(item);
-        //   }
-        // });
+        var picture = getPicture(e.target.firstElementChild);
+        showBigPicture(picture);
       }
     }
   });

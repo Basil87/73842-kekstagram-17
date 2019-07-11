@@ -2,7 +2,7 @@
 
 (function () {
 
-  var imageWrap = document.querySelector('.img-upload__preview');
+  var imageWrapElement = document.querySelector('.img-upload__preview');
 
   var changeSaturation = function (intensityIndex) {
 
@@ -15,11 +15,11 @@
       'effects__preview--none': 'none'
     };
 
-    imageWrap.classList.forEach(function (className) {
+    imageWrapElement.classList.forEach(function (className) {
       var result = classToSaturation[className];
 
       if (result) {
-        imageWrap.style.filter = result;
+        imageWrapElement.style.filter = result;
       }
     });
   };

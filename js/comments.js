@@ -4,12 +4,12 @@
 
   var ADD_COMMENTS_COUNT = 4;
 
-  var commentsLoader = document.querySelector('.comments-loader');
-  var socCommentCount = document.querySelector('.social__comment-count');
+  var commentsLoaderElement = document.querySelector('.comments-loader');
+  var socCommentCountElement = document.querySelector('.social__comment-count');
 
   var hideCommentsInfo = function () {
-    commentsLoader.classList.add('visually-hidden');
-    socCommentCount.classList.add('visually-hidden');
+    commentsLoaderElement.classList.add('visually-hidden');
+    socCommentCountElement.classList.add('visually-hidden');
   };
 
   var createElement = function (tagName, className) {
@@ -48,14 +48,14 @@
         count++;
       }
     });
-    socCommentCount.childNodes[0].data = count + ' из ';
+    socCommentCountElement.childNodes[0].data = count + ' из ';
 
     if (count === commentItems.length) {
       hideCommentsInfo();
     }
   };
 
-  commentsLoader.addEventListener('click', function () {
+  commentsLoaderElement.addEventListener('click', function () {
     var commentItems = document.querySelectorAll('.social__comment');
     var counter = 0;
     for (var i = 0; i < commentItems.length; i++) {
